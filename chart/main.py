@@ -4,12 +4,21 @@ from flask import Flask, Response
 app = Flask(__name__)
 app.debug = True
 
-data = 'http://192.168.2.250:3000/infographics/%s.json'
+live_url = 'http://192.168.2.250:3000/infographics/%s.json'
+example_url = '../examples/%s.json'
+
+def render_chart(data):
+    return Response(chart.render(json.loads(data)), mimetype='image/svg+xml')
 
 @app.route("/render/<data_id>")
-def hello(data_id):
-    r = requests.get(data % data_id)
-    return Response(chart.render(json.loads(r.text)), mimetype='image/svg+xml')
+def render(data_id):
+    r = requests.get(live_url % data_id)
+    return render_chart(r.text)
+
+@app.route('/example/<example_id>')
+def example(example_id):
+    with open(example_url % example_id) as f:
+        return render_chart(f.read())
 
 if __name__ == "__main__":
     app.run()
