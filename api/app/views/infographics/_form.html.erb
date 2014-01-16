@@ -1,0 +1,48 @@
+<%= form_for(@infographic) do |f| %>
+  <% if @infographic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@infographic.errors.count, "error") %> prohibited this infographic from being saved:</h2>
+
+      <ul>
+      <% @infographic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :chart_type %><br />
+    <%= f.text_field :chart_type %>
+  </div>
+
+  <fieldset>
+    <legend>Rows</legend>
+  <%= f.fields_for :rows do |e| %>
+    <div class="field">
+      <%= e.label :label %><br />
+      <%= e.text_field :label %>
+    </div>
+    <div class="field">
+      <%= e.label :value %><br />
+      <%= e.text_field :value %>
+    </div>
+    <div class="field">
+      <%= e.label :colour %><br />
+      <%= e.text_field :colour %>
+    </div>
+  <% end %>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

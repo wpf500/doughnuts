@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @infographic.title %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @infographic.source %>
+</p>
+
+<p>
+  <b>Chart type:</b>
+  <%= @infographic.chart_type %>
+</p>
+
+<p>
+	<b>Rows:</b>
+	<ul>
+	<% @infographic.rows.each do |row| %>
+		<li><%= row.label %>: <%= row.value %></li>
+	<% end %>
+	</ul>
+</p>
+
+	
+
+
+<%= link_to 'Edit', edit_infographic_path(@infographic) %> |
+<%= link_to 'Back', infographics_path %>

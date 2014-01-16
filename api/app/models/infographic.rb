@@ -1,0 +1,25 @@
+class Infographic < ActiveRecord::Base
+  has_many :rows
+  accepts_nested_attributes_for :rows, :allow_destroy => true
+  attr_accessible :chart_type, :source, :title, :rows_attributes
+
+  def to_json args
+  	json = JSON.parse super
+  	clean = {}
+
+  	clean['title'] = json['title']
+  	clean['source'] = json['source']
+  	clean['type'] = json['chart_type']
+  	clean['rows'] = []
+
+  	json['rows'].each {|r|
+  		clean['rows'] << {
+  			label: r['label'],
+  			value: r['value'],
+  			colour: r['colour']
+  		}
+  	}
+
+  	clean
+  end
+end
