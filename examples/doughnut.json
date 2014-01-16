@@ -2,6 +2,7 @@
     "type": "doughnut",
     "title": "test",
     "label_middle": "%",
+    "source": "ICM",
     "rows": [
         {
             "label": "Bad for Britain, as migrants take jobs",
