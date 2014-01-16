@@ -24,23 +24,69 @@
     <%= f.text_field :chart_type %>
   </div>
 
-  <fieldset>
-    <legend>Rows</legend>
-  <%= f.fields_for :rows do |e| %>
-    <div class="field">
-      <%= e.label :label %><br />
-      <%= e.text_field :label %>
-    </div>
-    <div class="field">
-      <%= e.label :value %><br />
-      <%= e.text_field :value %>
-    </div>
-    <div class="field">
-      <%= e.label :colour %><br />
-      <%= e.text_field :colour %>
-    </div>
+  <h3>Rows</h3>
+  <div class="rows">
+  <% i = 0 %>
+  <%= f.fields_for :rows do |builder| %>
+    <%= render "row_fields", :e => builder, :i => i %>
+    <% i += 1 %>
   <% end %>
-  </fieldset>
+  </div>
+  <button data-add-row="true">Add row</button>
+
+  <script>
+  (function() {
+    var nodes = document.querySelectorAll('[data-destroy-parent]'),
+        rowForms = nodes.length;
+
+    var removeHandler = function(e) {
+      e.preventDefault();
+
+      this.parentNode.style.display = 'none';
+
+      // we need to add a _destroy key
+      var rowIndex = this.parentNode.getAttribute('data-row-index'),
+          destroy = document.createElement('input');
+
+      destroy.name = 'infographic[rows_attributes][' + rowIndex + '][_destroy]';
+      destroy.value = 'true';
+      this.parentNode.appendChild(destroy);
+      rowForms = rowForms - 1;
+    }
+
+    for(i = 0; i < nodes.length; i++) {
+      console.log('binding to ' + nodes[i]);
+      nodes[i].addEventListener('click', removeHandler);
+    }
+
+    document.querySelector('[data-add-row]').addEventListener('click', function(e) {
+      e.preventDefault();
+      rowForms = rowForms + 1;
+
+      var f = document.createElement('fieldset');
+      ['label', 'value', 'colour'].forEach(function(field) {
+        var input = document.createElement('input'),
+            label = document.createElement('label');
+
+        input.type = 'text';
+        input.size = 30;
+        input.name = 'infographic[rows_attributes[' + rowForms + '][' + field + ']';
+        label.innerHTML = field.charAt(0).toUpperCase() + field.slice(1) + ' ';
+
+        f.appendChild(label);
+        f.appendChild(input);
+      });
+
+      var button = document.createElement('button');
+      button.innerHTML = 'Remove';
+      button.setAttribute('data-destroy-parent', 'true');
+      button.addEventListener('click', removeHandler);
+
+      f.appendChild(button);
+      document.querySelector('.rows').appendChild(f);
+    });
+  })();
+  </script>
 
   <div class="actions">
     <%= f.submit %>

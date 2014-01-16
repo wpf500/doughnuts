@@ -17,15 +17,21 @@
 
 <p>
 	<b>Rows:</b>
-	<ul>
+	<table>
+		<tr>
+			<th>Label</th>
+			<th>Value</th>
+			<th>Colour</th>
+		</tr>
 	<% @infographic.rows.each do |row| %>
-		<li><%= row.label %>: <%= row.value %></li>
+		<tr>
+			<td style="color:<%= row.colour %>"><%= row.label %></td>
+			<td><%= row.value %></td>
+			<td><%= row.colour %></td>
+		</tr>
 	<% end %>
-	</ul>
+	</table>
 </p>
-
-	
-
 
 <%= link_to 'Edit', edit_infographic_path(@infographic) %> |
 <%= link_to 'Back', infographics_path %>

@@ -25,7 +25,8 @@ class InfographicsController < ApplicationController
   # GET /infographics/new.json
   def new
     @infographic = Infographic.new
-    @infographic.rows.build
+    # @infographic.rows.build
+    3.times { @infographic.rows.build }
 
     respond_to do |format|
       format.html # new.html.erb

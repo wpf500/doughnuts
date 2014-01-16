@@ -1,6 +1,6 @@
 class Infographic < ActiveRecord::Base
   has_many :rows
-  accepts_nested_attributes_for :rows, :allow_destroy => true
+  accepts_nested_attributes_for :rows, :reject_if => lambda { |a| a[:value].blank? }, :allow_destroy => true
   attr_accessible :chart_type, :source, :title, :rows_attributes
 
   def to_json args
