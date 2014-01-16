@@ -5,6 +5,8 @@ from pygal.config import Config
 # create a new Style each time because we can overwrite colours
 def gu_style():
     return Style(
+        opacity=0.7,
+        opacity_hover=1,
         background='white',
         plot_background='white',
         foreground='rgba(0, 0, 0, 0.7)',
