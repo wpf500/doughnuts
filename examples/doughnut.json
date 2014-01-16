@@ -1,5 +1,6 @@
 {
     "type": "doughnut",
+    "label_middle": "%",
     "data": [
         {
             "label": "Bad for Britain, as migrants take jobs",
