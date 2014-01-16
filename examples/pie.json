@@ -1,21 +1,18 @@
 {
     "title": "blah",
     "type": "pie",
-    "data": [
+    "rows": [
         {
             "label": "Bad for Britain, as migrants take jobs",
-            "value": 54,
-            "color": "red"
+            "value": 54
         },
         {
             "label": "Don't know",
-            "value": 11,
-            "color": "green"
+            "value": 11
         },
         {
             "label": "Good for Britain, as migrants claim fewer benefits",
-            "value": 36,
-            "color": "blue"
+            "value": 36
         }
     ]
 }
