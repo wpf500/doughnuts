@@ -1,11 +1,13 @@
+from itertools import cycle, izip
 import pygal
-from pygal.style import LightStyle
 
-def render(chart):
-    style = LightStyle
-    style.colors = tuple(row['colour'] for row in chart['rows'])
-    style.plot_background = style.background
-    pie = pygal.Pie(style=LightStyle)
-    for row in chart['rows']:
+def render(chart, style, inner_radius=0):
+    rows = chart['rows']
+
+    style.colors = [row.get('colour', alt) for row, alt in
+            izip(rows, cycle(style.colors))]
+
+    pie = pygal.Pie(style=style, inner_radius=inner_radius)
+    for row in rows:
         pie.add(row['label'], row['value'])
     return pie
