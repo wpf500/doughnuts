@@ -1,0 +1,8 @@
+{{ id }}.reactive:hover {
+  fill-opacity:  {{ style.opacity_hover }};
+}
+
+{{ id }}.inner_label {
+    font-size: 3em;
+    alignment-baseline: middle;
+}

@@ -1,7 +1,7 @@
 {
     "type": "doughnut",
-    "title": "test",
-    "label_middle": "%",
+    "title": "A less than warm welcome: views on immigration from EU",
+    "inner_label": "%",
     "source": "ICM",
     "rows": [
         {

@@ -1,4 +1,4 @@
 import pie
 
-def render(chart, style):
-    return pie.render(chart, style, 0.3)
+def render(chart_data):
+    return pie.render(chart_data, 0.3)
