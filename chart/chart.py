@@ -1,10 +1,10 @@
 #!/usr/bin/python
-import sys, json
+def render(chart_data):
+    module = __import__('handlers.%s' % chart_data['type'], fromlist=['render'])
 
-chart_data = json.loads(sys.stdin.read())
-module = __import__('handlers.%s' % chart_data['type'], fromlist=['render'])
+    chart = module.render(chart_data)
 
-chart = module.render(chart_data)
-chart.title = chart_data['title']
-chart.add_source(chart_data.get('source'))
-print chart.render()
+    chart.title = chart_data['title']
+    chart.add_source(chart_data.get('source'))
+
+    return chart.render()
