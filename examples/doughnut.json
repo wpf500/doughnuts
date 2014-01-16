@@ -1,0 +1,17 @@
+{
+    "type": "doughnut",
+    "data": [
+        {
+            "label": "Bad for Britain, as migrants take jobs",
+            "value": "54",
+        },
+        {
+            "label": "Don't know",
+            "value": "11"
+        },
+        {
+            "label": "Good for Britain, as migrants claim fewer benefits"
+            "value": "36"
+        }
+    ]
+}
