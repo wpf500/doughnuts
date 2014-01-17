@@ -6,3 +6,8 @@
     font-size: 3em;
     alignment-baseline: middle;
 }
+
+{{ id }}.title {
+    fill: #005689;
+    font-weight: bold;
+}
