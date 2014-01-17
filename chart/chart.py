@@ -28,6 +28,7 @@ def gu_config():
         title_font_size=22,
         value_font_size=18,
         label_font_size=18,
+        major_label_font_size=18,
         font_family='EgyptianText')
     ret.css.extend(['style/egyptian.css', 'style/custom.css'])
     return ret
