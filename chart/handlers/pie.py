@@ -1,4 +1,3 @@
-from itertools import cycle, izip
 import pygal, webcolors
 
 import chart
@@ -13,10 +12,7 @@ def text_color(css_color, light, dark):
 def render(chart_data, inner_radius=0):
     rows = chart_data['rows']
 
-    style = chart.gu_style()
-    style.colors = [row.get('colour', alt) for row, alt in
-            izip(rows, cycle(style.colors))]
-
+    style = chart.gu_style(rows)
     style.text_colors = [text_color(color, 'white', style.foreground_light)
             for color in style.colors]
 

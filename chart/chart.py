@@ -1,10 +1,12 @@
 #!/usr/bin/python
+from itertools import izip, cycle
+
 from pygal.style import Style
 from pygal.config import Config
 
 # create a new Style each time because we can overwrite colours
-def gu_style():
-    return Style(
+def gu_style(rows):
+    style = Style(
         opacity=1,
         opacity_hover=0.7,
         background='white',
@@ -15,6 +17,9 @@ def gu_style():
         colors=('#242424', '#9f6767', '#92ac68',
                 '#d0d293', '#9aacc3', '#bb77a4',
                 '#77bbb5', '#777777'))
+    style.colors = [row.get('colour', alt) for row, alt in
+            izip(rows, cycle(style.colors))]
+    return style
 
 # same as above
 def gu_config():
