@@ -1,6 +1,7 @@
 {
     "title": "blah",
     "type": "line",
+    "source": "ICM",
     "x_labels": [
         "label1",
         "label2",
