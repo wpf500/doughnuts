@@ -3,15 +3,21 @@ import chart
 from flask import Flask, Response
 app = Flask(__name__)
 
-live_url = 'http://192.168.2.250:3000/infographics/%s.json'
+live_url = 'http://192.168.2.250:3000/'
+live_urls = {
+    'pie': live_url + 'infographics/%s.json',
+    'doughnut': live_url + 'infographics/%s.json',
+    'line': live_url + 'line_charts/%s.json'
+}
+
 example_url = '../examples/%s.json'
 
 def render_chart(data):
     return Response(chart.render(json.loads(data)), mimetype='image/svg+xml')
 
-@app.route("/render/<data_id>")
-def render(data_id):
-    r = requests.get(live_url % data_id)
+@app.route("/render/<type_>/<data_id>")
+def render(type_, data_id):
+    r = requests.get(live_urls[type_] % data_id)
     return render_chart(r.text)
 
 @app.route('/example/<example_id>')
