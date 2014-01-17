@@ -10,10 +10,13 @@ def render(chart_data, inner_radius=0):
     style.colors = [row.get('colour', alt) for row, alt in
             izip(rows, cycle(style.colors))]
 
-    # for doughnuts
     config = chart.gu_config()
+    config.inline_legend = True
+
+    # for doughnuts
     config.inner_radius = inner_radius
     config.inner_label = chart_data.get('inner_label')
+
 
     pie = pygal.Pie(style=style, config=config)
     for row in rows:
