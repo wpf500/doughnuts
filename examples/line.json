@@ -11,6 +11,7 @@
         "label7",
         "label8"
     ],
+    "y_labels": [40, 45, 50, 55],
     "rows": [
         {
             "label": "Not confident",
