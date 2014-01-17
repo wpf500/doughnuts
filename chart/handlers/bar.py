@@ -10,6 +10,7 @@ def render(chart_data, type_=pygal.Bar):
 
     bar = type_(style=chart.gu_style(rows), config=config)
     bar.x_labels = chart_data['x_labels']
+    bar.y_title = chart_data.get('y_label')
     bar.y_labels = chart_data.get('y_labels')
     for row in rows:
         bar.add(row['label'], row['value'])

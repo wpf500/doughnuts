@@ -9,6 +9,7 @@ def render(chart_data):
 
     radar = pygal.Dot(style=chart.gu_style(rows), config=config)
     radar.x_labels = chart_data['x_labels']
+    radar.y_title = chart_data.get('y_label')
     radar.y_labels = chart_data.get('y_labels')
     for row in rows:
         radar.add(row['label'], row['value'])
