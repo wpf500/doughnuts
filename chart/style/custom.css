@@ -11,3 +11,8 @@
     fill: #005689;
     font-weight: bold;
 }
+
+{{ id }}.axis text.major {
+  stroke: 0;
+  fill: {{ style.foreground }};
+}

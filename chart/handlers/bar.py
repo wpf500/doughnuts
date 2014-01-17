@@ -7,7 +7,6 @@ def render(chart_data, type_=pygal.Bar):
     config = chart.gu_config()
     config.height = 450
     config.print_values = False
-    config.css.append('style/bar.css')
 
     bar = type_(style=chart.gu_style(rows), config=config)
     bar.x_labels = chart_data['x_labels']
