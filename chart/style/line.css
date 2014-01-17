@@ -1,7 +1,3 @@
-{{ id }}.text-overlay {
-    display: none;
-}
-
 {{ id }}.series .line,
 {{ id }}.dot {
     stroke-width: 3px;

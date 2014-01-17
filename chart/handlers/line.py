@@ -8,6 +8,7 @@ def render(chart_data):
     config.css.append('style/line.css')
     config.height = 450
     config.inline_legend = True
+    config.print_values = False
 
     line = pygal.Line(style=chart.gu_style(rows), config=config)
     line.x_labels = chart_data['x_labels']
