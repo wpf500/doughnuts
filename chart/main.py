@@ -2,7 +2,6 @@ import requests, json
 import chart
 from flask import Flask, Response
 app = Flask(__name__)
-app.debug = True
 
 live_url = 'http://192.168.2.250:3000/infographics/%s.json'
 example_url = '../examples/%s.json'
@@ -21,4 +20,4 @@ def example(example_id):
         return render_chart(f.read())
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, host='0.0.0.0')
