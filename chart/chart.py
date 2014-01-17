@@ -19,7 +19,7 @@ def gu_style():
 # same as above
 def gu_config():
     ret = Config(
-        js=[],
+        disable_js=True,
         value_font_size=18,
         font_family='arial')
     ret.css.append('custom.css')
