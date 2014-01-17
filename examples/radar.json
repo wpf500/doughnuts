@@ -1,0 +1,28 @@
+{
+    "title": "blah",
+    "type": "radar",
+    "source": "ICM",
+    "x_labels": [
+        "label1",
+        "label2",
+        "label3",
+        "label4",
+        "label5",
+        "label6",
+        "label7",
+        "label8"
+    ],
+    "y_labels": [0, 10, 20, 30, 40, 50],
+    "rows": [
+        {
+            "label": "Not confident",
+            "colour": "red",
+            "value": [48, 46, 43, 39, 42, 41, 50, 54]
+        },
+        {
+            "label": "Confident",
+            "colour": "blue",
+            "value": [54, 38, 46, 46, 51, 40, 58, 53]
+        }
+    ]
+}
