@@ -22,8 +22,8 @@ def gu_config():
         disable_js=True,
         title_font_size=22,
         value_font_size=18,
-        font_family='arial')
-    ret.css.append('custom.css')
+        font_family='EgyptianText')
+    ret.css.extend(['style/egyptian.css', 'style/custom.css'])
     return ret
 
 def render(chart_data):
