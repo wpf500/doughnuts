@@ -16,3 +16,7 @@
   stroke: 0;
   fill: {{ style.foreground }};
 }
+
+{{ id }}.text-overlay {
+  font-weight: bold;
+}

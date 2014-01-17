@@ -26,7 +26,7 @@ def gu_config():
     ret = Config(
         disable_js=True,
         title_font_size=22,
-        value_font_size=18,
+        value_font_size=22,
         label_font_size=18,
         major_label_font_size=18,
         font_family='EgyptianText')
