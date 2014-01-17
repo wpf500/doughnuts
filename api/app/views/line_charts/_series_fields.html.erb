@@ -1,0 +1,7 @@
+<fieldset style="border-color:#ccc;margin:10px 0;" data-series-index="<%= i %>">
+    <%= e.label :label %> <%= e.text_field :label %>
+    <%= e.label :colour %> <%= e.text_field :colour %>
+    <%= e.label :values %> <%= e.text_field :values %>
+    <%= e.hidden_field :id %>
+    <button data-destroy-parent="true" class="remove">Remove</button>
+</fieldset>

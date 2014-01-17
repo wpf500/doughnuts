@@ -18,7 +18,8 @@
   <h3>Details</h3>
   <%= f.label :subtitle %> <%= f.text_field :subtitle %>
   <%= f.label :source %> <%= f.text_field :source %>
-  <%= f.label :chart_type %> <%= f.text_field :chart_type %>
+  <%= f.hidden_field :chart_type, value: "doughnut" %>
+  <%= f.label :inner_label %> <%= f.text_field :inner_label %>
 
   <h3>Rows</h3>
   <div class="rows">
@@ -78,6 +79,7 @@
       });
 
       var button = document.createElement('button');
+      button.classList.add('remove');
       button.innerHTML = 'Remove';
       button.setAttribute('data-destroy-parent', 'true');
       button.addEventListener('click', removeHandler);
@@ -88,9 +90,13 @@
   })();
   </script>
 
-  <div class="chart-container">
-    <iframe width="600" src="http://192.168.2.231:5000/render/<%= @infographic.id %>"></iframe>
-  </div>
+  <% if @infographic.id %>
+    <div class="chart-container">
+        <embed type="image/svg+xml" src="http://192.168.2.231:5000/render/doughnut/<%= @infographic.id %>" />
+      <!-- <embed type="image/svg+xml" src="http://192.168.2.231:5000/render/3" /> -->
+      <!-- <iframe width="600" src="http://192.168.2.231:5000/render/<%= @infographic.id %>"></iframe> -->
+    </div>
+  <% end %>
 
   <textarea style="width:100%;">&lt;embed type=&quot;image/svg+xml&quot; src=&quot;http://localhost:5000/render/<%= @infographic.id %>&quot; /&gt;</textarea>
 

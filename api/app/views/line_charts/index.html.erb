@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Source</th>
+    <th>Chart type</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @line_charts.each do |line_chart| %>
+  <tr>
+    <td><%= line_chart.title %></td>
+    <!-- <td><%# link_to 'Show', line_chart %></td> -->
+    <td><%= link_to 'Edit', edit_line_chart_path(line_chart) %></td>
+    <td style="font-size:10px"><%= link_to 'Remove', line_chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New line_chart', new_line_chart_path %>

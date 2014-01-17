@@ -1,0 +1,118 @@
+<%= form_for(@line_chart) do |f| %>
+  <% if @line_chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@line_chart.errors.count, "error") %> prohibited this line_chart from being saved:</h2>
+
+      <ul>
+      <% @line_chart.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>What shall we call it?</h3>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :chart_type %>
+    <%= f.select :chart_type, options_for_select([['Line', 'line'],['Stacked Line', 'stackedline'],['Bar', 'bar'],['Stacked Bar', 'stackedbar'], ['RADAR', 'radar']]) %>
+  </div>
+
+  <h3>What are we measuring?</h3>
+  <div class="field">
+    <%= f.label :yLabel %>
+    <%= f.text_field :yLabel %>
+  </div>
+
+  <h3>What should the labels be along the bottom?</h3>
+  <p>Seperate labels with commas. You'll need to provide this many data points per line.</p>
+  <div class="field">
+    <%= f.label :xLabels %>
+    <%= f.text_field :xLabels %>
+  </div>
+
+  <h3>Series</h3>
+  <p>For <b>values</b>, seperate data points with commas. You need as many values as you have labels.</p>
+  <div class="series">
+  <% i = 0 %>
+  <%= f.fields_for :series do |builder| %>
+    <%= render "series_fields", :e => builder, :i => i %>
+    <% i += 1 %>
+  <% end %>
+  </div>
+  <button data-add-series="true" class="add">Add series</button>
+
+  <script>
+  (function() {
+    var titleField = document.querySelector('#line_chart_title')
+    titleField.focus();
+    titleField.value = titleField.value;
+
+    var nodes = document.querySelectorAll('[data-destroy-parent]'),
+        seriesForms = nodes.length - 1;
+
+    var removeHandler = function(e) {
+      e.preventDefault();
+
+      this.parentNode.style.display = 'none';
+
+      // we need to add a _destroy key
+      var seriesIndex = this.parentNode.getAttribute('data-series-index'),
+          destroy = document.createElement('input');
+
+      destroy.name = 'line_chart[series_attributes][' + seriesIndex + '][_destroy]';
+      destroy.value = 'true';
+      this.parentNode.appendChild(destroy);
+      seriesForms = seriesForms - 1;
+    }
+
+    for(i = 0; i < nodes.length; i++) {
+      nodes[i].addEventListener('click', removeHandler);
+    }
+
+    document.querySelector('[data-add-series]').addEventListener('click', function(e) {
+      e.preventDefault();
+      seriesForms = seriesForms + 1;
+
+      var f = document.createElement('fieldset');
+      ['label', 'values', 'colour'].forEach(function(field) {
+        var input = document.createElement('input'),
+            label = document.createElement('label');
+
+        input.type = 'text';
+        input.size = 30;
+        input.name = 'line_chart[series_attributes[' + seriesForms + '][' + field + ']';
+        label.innerHTML = field.charAt(0).toUpperCase() + field.slice(1) + ' ';
+
+        f.appendChild(label);
+        f.appendChild(input);
+      });
+
+      var button = document.createElement('button');
+      button.classList.add('remove');
+      button.innerHTML = 'Remove';
+      button.setAttribute('data-destroy-parent', 'true');
+      button.addEventListener('click', removeHandler);
+
+      f.appendChild(button);
+      document.querySelector('.series').appendChild(f);
+    });
+  })();
+  </script>
+
+  <div class="chart-container">
+    <%# @svg || '<embed type="image/svg+xml" src="http://192.168.2.231:5000/render/3" />'.html_safe %>
+    <embed type="image/svg+xml" src="http://192.168.2.231:5000/render/line/<%= @line_chart.id %>" />
+    <!-- <iframe width="600" src="http://192.168.2.231:5000/render/<%= @line_chart.id %>"></iframe> -->
+  </div>
+
+  <!-- <textarea style="width:100%;">&lt;embed type=&quot;image/svg+xml&quot; src=&quot;http://localhost:5000/render/<%= @line_chart.id %>&quot; /&gt;</textarea> -->
+
+  <div class="actions">
+    <%= f.submit "Save save save" %>
+    <br style="clear:both;" />
+  </div>
+<% end %>

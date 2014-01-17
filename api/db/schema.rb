@@ -11,15 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117101605) do
+ActiveRecord::Schema.define(:version => 20140117135400) do
 
   create_table "infographics", :force => true do |t|
     t.string   "title"
     t.string   "source"
     t.string   "chart_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "subtitle"
+    t.string   "inner_label"
+  end
+
+  create_table "line_charts", :force => true do |t|
+    t.string   "title"
+    t.string   "yLabel"
+    t.string   "xLabels"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "subtitle"
+    t.string   "colour"
+    t.string   "chart_type"
   end
 
   create_table "rows", :force => true do |t|
@@ -29,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20140117101605) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "infographic_id"
+  end
+
+  create_table "series", :force => true do |t|
+    t.string   "label"
+    t.string   "values"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "line_chart_id"
+    t.string   "colour"
   end
 
 end

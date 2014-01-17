@@ -1,3 +1,5 @@
+require 'net/http'
+
 class InfographicsController < ApplicationController
   # GET /infographics
   # GET /infographics.json
@@ -37,6 +39,14 @@ class InfographicsController < ApplicationController
   # GET /infographics/1/edit
   def edit
     @infographic = Infographic.find(params[:id])
+
+    # acquire the svg
+    # url = URI.parse "http://192.168.2.231:5000/render/#{params[:id]}"
+    # req = Net::HTTP::Get.new url.path
+    # res = Net::HTTP.start(url.host, url.port) do |http|
+    #   http.request(req)
+    # end
+    # @svg = res.body
   end
 
   # POST /infographics
