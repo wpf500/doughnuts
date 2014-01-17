@@ -3,6 +3,10 @@ class Infographic < ActiveRecord::Base
   accepts_nested_attributes_for :rows, :reject_if => lambda { |a| a[:value].blank? }, :allow_destroy => true
   attr_accessible :chart_type, :source, :subtitle, :title, :rows, :rows_attributes, :inner_label
 
+  def embed_url
+    "http://localhost:5000/render/doughnut/#{self.id}"
+  end
+
   def to_json args
   	json = JSON.parse super
   	clean = {}

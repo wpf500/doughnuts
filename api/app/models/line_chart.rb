@@ -3,6 +3,10 @@ class LineChart < ActiveRecord::Base
   attr_accessible :title, :xLabels, :yLabel, :series, :series_attributes, :chart_type
   accepts_nested_attributes_for :series, :reject_if => lambda { |a| a[:values].blank? }, :allow_destroy => true
 
+  def embed_url
+    "http://localhost:5000/render/line/#{self.id}"
+  end
+
   def to_json args
   	json = JSON.parse super
   	clean = {}

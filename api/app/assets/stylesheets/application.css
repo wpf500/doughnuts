@@ -135,3 +135,24 @@ textarea {
 	font-family:'Monaco', 'Courier New', 'Courier', monospace;
 	color:#999;
 }
+
+.boom {
+	clear:both;
+	display:block;
+	text-align:center;
+	text-decoration:none;
+	font-size:40px;
+	border:1px solid #999;
+	margin:20px 0;
+	padding:100px;
+	border-radius:20px;
+}
+
+.boom:hover {
+	background-color:#94C021;
+	color:#fff;
+}
+
+a.boom {
+	color:red;
+}

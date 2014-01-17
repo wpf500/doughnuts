@@ -1,24 +1,13 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Source</th>
-    <th>Chart type</th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @infographics.each do |infographic| %>
-  <tr>
-    <td><%= infographic.title %></td>
-    <td><%= infographic.source %></td>
-    <td><%= infographic.chart_type %></td>
-    <!-- <td><%# link_to 'Show', infographic %></td> -->
-    <td><%= link_to 'Edit', edit_infographic_path(infographic) %></td>
-    <td style="font-size:10px"><%= link_to 'Remove', infographic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="chart" style="clear:both; border-top:1px solid #888;">
+    <div style="width:35%;float:right;margin-left:20px">
+      <embed type="image/svg+xml" src="<%= infographic.embed_url %>" />
+    </div>
+    <h3><%= infographic.title %></h3>
+    <p><%= link_to 'Edit', edit_infographic_path(infographic), style: "font-size:24px" %><br /><br /><%= link_to 'Remove', infographic, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    
+  </div>
 <% end %>
-</table>
-
-<br />
+<br style="clear:both;" />
 
 <%= link_to 'New Infographic', new_infographic_path %>
