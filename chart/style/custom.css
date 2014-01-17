@@ -12,6 +12,10 @@
     font-weight: bold;
 }
 
+{{ id }}.subtitle {
+    fill: #009fe3;
+}
+
 {{ id }}.axis text.major {
   stroke: 0;
   fill: {{ style.foreground }};
