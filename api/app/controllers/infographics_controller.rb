@@ -62,7 +62,7 @@ class InfographicsController < ApplicationController
 
     respond_to do |format|
       if @infographic.update_attributes(params[:infographic])
-        format.html { redirect_to @infographic, notice: 'Infographic was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Infographic was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
