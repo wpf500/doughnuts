@@ -12,17 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_field :source %>
-  </div>
-  <div class="field">
-    <%= f.label :chart_type %><br />
-    <%= f.text_field :chart_type %>
-  </div>
+
+  <h3>Details</h3>
+  <%= f.label :subtitle %> <%= f.text_field :subtitle %>
+  <%= f.label :source %> <%= f.text_field :source %>
+  <%= f.label :chart_type %> <%= f.text_field :chart_type %>
 
   <h3>Rows</h3>
   <div class="rows">
@@ -32,10 +28,14 @@
     <% i += 1 %>
   <% end %>
   </div>
-  <button data-add-row="true">Add row</button>
+  <button data-add-row="true" class="add">Add row</button>
 
   <script>
   (function() {
+    var titleField = document.querySelector('#infographic_title')
+    titleField.focus();
+    titleField.value = titleField.value;
+
     var nodes = document.querySelectorAll('[data-destroy-parent]'),
         rowForms = nodes.length;
 
@@ -88,7 +88,14 @@
   })();
   </script>
 
+  <div class="chart-container">
+    <iframe width="600" src="http://192.168.2.231:5000/render/<%= @infographic.id %>"></iframe>
+  </div>
+
+  <textarea style="width:100%;">&lt;embed type=&quot;image/svg+xml&quot; src=&quot;http://localhost:5000/render/<%= @infographic.id %>&quot; /&gt;</textarea>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save save save" %>
+    <br style="clear:both;" />
   </div>
 <% end %>

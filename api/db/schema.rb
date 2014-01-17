@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116145029) do
+ActiveRecord::Schema.define(:version => 20140117101605) do
 
   create_table "infographics", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20140116145029) do
     t.string   "chart_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "subtitle"
   end
 
   create_table "rows", :force => true do |t|
