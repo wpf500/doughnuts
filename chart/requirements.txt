@@ -1,0 +1,4 @@
+flask
+requests
+webcolors
+-e git+git://github.com/wpf500/pygal.git#egg=Pygal

@@ -1,0 +1,9 @@
+#!/bin/bash -e
+if [ ! -d ve ]; then
+    virtualenv ve
+    . ve/bin/activate
+    pip install -r requirements.txt
+fi
+
+. ve/bin/activate
+python main.py
