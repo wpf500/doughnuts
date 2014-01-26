@@ -104,12 +104,10 @@
   </script>
 
   <div class="chart-container">
-    <%# @svg || '<embed type="image/svg+xml" src="http://192.168.2.231:5000/render/3" />'.html_safe %>
-    <embed type="image/svg+xml" src="http://192.168.2.231:5000/render/line/<%= @line_chart.id %>" />
-    <!-- <iframe width="600" src="http://192.168.2.231:5000/render/<%= @line_chart.id %>"></iframe> -->
+    <embed type="image/svg+xml" src="/chart/render/line/<%= @line_chart.id %>" />
   </div>
 
-  <!-- <textarea style="width:100%;">&lt;embed type=&quot;image/svg+xml&quot; src=&quot;http://localhost:5000/render/<%= @line_chart.id %>&quot; /&gt;</textarea> -->
+  <textarea style="width:100%;">&lt;embed type=&quot;image/svg+xml&quot; src=&quot;/chart/render/line/<%= @infographic.id %>&quot; /&gt;</textarea>
 
   <div class="actions">
     <%= f.submit "Save save save" %>

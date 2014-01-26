@@ -92,13 +92,11 @@
 
   <% if @infographic.id %>
     <div class="chart-container">
-        <embed type="image/svg+xml" src="http://192.168.2.231:5000/render/doughnut/<%= @infographic.id %>" />
-      <!-- <embed type="image/svg+xml" src="http://192.168.2.231:5000/render/3" /> -->
-      <!-- <iframe width="600" src="http://192.168.2.231:5000/render/<%= @infographic.id %>"></iframe> -->
+        <embed type="image/svg+xml" src="/chart/render/doughnut/<%= @infographic.id %>" />
     </div>
   <% end %>
 
-  <textarea style="width:100%;">&lt;embed type=&quot;image/svg+xml&quot; src=&quot;http://localhost:5000/render/<%= @infographic.id %>&quot; /&gt;</textarea>
+  <textarea style="width:100%;">&lt;embed type=&quot;image/svg+xml&quot; src=&quot;/chart/render/doughnut/<%= @infographic.id %>&quot; /&gt;</textarea>
 
   <div class="actions">
     <%= f.submit "Save save save" %>
