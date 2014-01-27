@@ -4,7 +4,7 @@ class Infographic < ActiveRecord::Base
   attr_accessible :chart_type, :source, :subtitle, :title, :rows, :rows_attributes, :inner_label
 
   def embed_url
-    "http://localhost:5000/render/doughnut/#{self.id}"
+    "/chart/render/doughnut/#{self.id}"
   end
 
   def to_json args

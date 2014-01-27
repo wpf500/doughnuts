@@ -4,7 +4,7 @@ class LineChart < ActiveRecord::Base
   accepts_nested_attributes_for :series, :reject_if => lambda { |a| a[:values].blank? }, :allow_destroy => true
 
   def embed_url
-    "http://localhost:5000/render/line/#{self.id}"
+    "/chart/render/line/#{self.id}"
   end
 
   def to_json args
