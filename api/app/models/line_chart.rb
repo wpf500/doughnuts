@@ -14,6 +14,7 @@ class LineChart < ActiveRecord::Base
   	clean['title'] = json['title']
   	clean['type'] = json['chart_type']
   	clean['source'] = 'doughnuts'
+    clean['y_label'] = json['yLabel']
 
   	clean['x_labels'] = json['xLabels'].split(',')
 

@@ -3,7 +3,8 @@ import chart
 from flask import Flask, Response
 app = Flask(__name__)
 
-live_url = 'http://localhost:3000/'
+live_url = 'http://127.0.0.1:3000/'
+
 live_urls = {
     'pie': live_url + 'infographics/%s.json',
     'doughnut': live_url + 'infographics/%s.json',
