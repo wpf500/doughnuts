@@ -1,4 +1,4 @@
-import pygal, webcolors
+import pygal, webcolors, colorsys
 
 import chart
 
@@ -7,7 +7,8 @@ def text_color(css_color, light, dark):
         color = webcolors.hex_to_rgb(css_color)
     else:
         color = webcolors.name_to_rgb(css_color)
-    return light if sum(color) / 3. < 70 else dark
+    color = colorsys.rgb_to_hls(*(a / 255. for a in color))
+    return light if color[1] < 0.7 else dark
 
 def render(chart_data, inner_radius=0):
     rows = chart_data['rows']
