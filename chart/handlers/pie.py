@@ -13,9 +13,13 @@ def text_color(css_color, light, dark):
 def render(chart_data, inner_radius=0):
     rows = chart_data['rows']
 
+    total = sum(row['value'] for row in rows) * 1.
+
     style = chart.gu_style(rows)
-    style.text_colors = [text_color(color, 'white', style.foreground_light)
-            for color in style.colors]
+    style.text_colors = [
+        text_color(color, 'white' if row['value'] / total > 0.04 else style.foreground_light, style.foreground_light)
+            for row, color in zip(rows, style.colors)
+    ]
 
     config = chart.gu_config()
     config.inline_legend = True
